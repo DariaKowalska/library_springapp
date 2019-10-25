@@ -6,7 +6,6 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-
 public class Author {
 
     @Id
@@ -18,8 +17,7 @@ public class Author {
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 
-    public Author(){
-
+    public Author() {
     }
 
     public Author(String firstName, String lastName) {
@@ -32,7 +30,6 @@ public class Author {
         this.lastName = lastName;
         this.books = books;
     }
-
 
     public Long getId() {
         return id;
@@ -70,13 +67,15 @@ public class Author {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Author author = (Author) o;
+
         return Objects.equals(id, author.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return id != null ? id.hashCode() : 0;
     }
 
     @Override
